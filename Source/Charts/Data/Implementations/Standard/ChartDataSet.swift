@@ -571,4 +571,9 @@ extension ChartDataSet: RangeReplaceableCollection {
         entries.removeAll(keepingCapacity: keepCapacity)
         notifyDataSetChanged()
     }
+
+    public func replaceSubrange<R, C>(_ subrange: R, with newElements: C) where R: RangeExpression, Index == R.Bound, C : Collection, ChartDataEntry == C.Element {
+    	entries.replaceSubrange(subrange, with: newElements)
+    	notifyDataSetChanged()
+    }
 }
